@@ -1,6 +1,6 @@
 {
   "name": "ibmmq-facade",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A high level interface to the ibmmq library",
   "main": "app.js",
   "scripts": {
