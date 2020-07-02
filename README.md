@@ -18,7 +18,7 @@ const config = {
   user: 'user',
   password: 'password',
   queueManagerName: 'qMrg',
-  channelName: 'chName',
+  channelName: 'chName'
 };
 
 (async function() {
@@ -56,7 +56,7 @@ while (queue.isMessages()) {
 }
 ```
 
-#### Putting messages on to queueConnector
+#### Putting messages on to queue
 ```javascript
 const queue = new Queue(queueHandle);
 
