@@ -10,6 +10,7 @@
       "ecmaVersion": 11
     },
     "rules": {
+      "no-trailing-spaces": 1,
       "no-useless-escape": 0,
       "no-restricted-globals": 0,
       "no-duplicate-imports": 0,

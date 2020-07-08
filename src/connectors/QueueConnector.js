@@ -17,7 +17,7 @@ QueueConnector.prototype.connect = async function(queueManagerHandle, queueName)
   this.queueOptions.ObjectName = queueName;
   this.queueOptions.ObjectType = this.MQC.MQOT_Q;
 
-  const openOptions = this.MQC.MQOO_INPUT_AS_Q_DEF | this.MQC.MQOO_OUTPUT;
+  const openOptions = this.MQC.MQOO_INPUT_AS_Q_DEF | this.MQC.MQOO_OUTPUT | this.MQC.MQOO_BROWSE;
   this.handle = await this.mq.OpenPromise(queueManagerHandle, this.queueOptions, openOptions);
 
   console.log('Successfully connected to queue');

@@ -35,7 +35,7 @@ QueueManagerConnector.prototype.connect = async function(config) {
   }
 
   this.connectionOptions.Options |= this.MQC.MQCNO_CLIENT_BINDING;
-  
+
   const securityOptions = new this.mq.MQCSP();
   securityOptions.UserId = config.user;
   securityOptions.Password = config.password;

@@ -71,7 +71,7 @@ queue.enqueue(message);
 * QueueManager::getHandle() : object
 * QueueManager::clean()
 
-#### queueConnector
+#### QueueConnector
 * QueueConnector::getQueueOptions() : object
 * QueueConnector::connect(queueManagerHandle, queueName) : object
 * QueueConnector::getHandle() : object
@@ -79,6 +79,7 @@ queue.enqueue(message);
 
 #### Queue
 * Queue::__construct(queueHandle [, buffer])
-* Queue::dequeue() : string
+* Queue::dequeue() : buffer
 * Queue::enqueue(message)
 * Queue::isMessages() : bool
+* Queue::peek() : object
