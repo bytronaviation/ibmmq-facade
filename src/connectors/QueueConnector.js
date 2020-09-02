@@ -11,13 +11,19 @@ QueueConnector.prototype.getQueueOptions = function() {
   return this.queueOptions;
 }
 
-QueueConnector.prototype.connect = async function(queueManagerHandle, queueName) {
+QueueConnector.prototype.connect = async function(queueManagerHandle, queueName, isRemoteQueue = false) {
   console.log(`Connecting to queue: ${queueName}`);
 
   this.queueOptions.ObjectName = queueName;
   this.queueOptions.ObjectType = this.MQC.MQOT_Q;
+  let openOptions = this.MQC.MQOO_OUTPUT;
 
-  const openOptions = this.MQC.MQOO_INPUT_AS_Q_DEF | this.MQC.MQOO_OUTPUT | this.MQC.MQOO_BROWSE;
+  // we cannot read from remote queues. Therefore, only add the options to browse and get messages
+  // from a queue if it is not a remote queue, i.e. it is a local queue
+  if (!isRemoteQueue) {
+    openOptions |= this.MQC.MQOO_INPUT_AS_Q_DEF | this.MQC.MQOO_BROWSE;
+  }
+
   this.handle = await this.mq.OpenPromise(queueManagerHandle, this.queueOptions, openOptions);
 
   console.log('Successfully connected to queue');
