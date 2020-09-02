@@ -17,7 +17,7 @@ const config = {
   port: 1750,
   user: 'user',
   password: 'password',
-  queueManagerName: 'qMrg',
+  queueManagerName: 'qMgr',
   channelName: 'chName'
 };
 
@@ -56,8 +56,18 @@ while (queue.isMessages()) {
 }
 ```
 
-#### Putting messages on to queue
+#### Putting messages on to a local queue
 ```javascript
+const queueHandle = queueConnector.connect(queueManagerConnector.getHandle(), 'QUEUE_NAME');
+const queue = new Queue(queueHandle);
+
+const message = "Hello World";
+queue.enqueue(message);
+```
+
+#### Putting messages on to a remote queue
+```javascript
+const queueHandle = queueConnector.connect(queueManagerConnector.getHandle(), 'QUEUE_NAME', true); // true to allow posting to remote queue
 const queue = new Queue(queueHandle);
 
 const message = "Hello World";
@@ -73,7 +83,7 @@ queue.enqueue(message);
 
 #### QueueConnector
 * QueueConnector::getQueueOptions() : object
-* QueueConnector::connect(queueManagerHandle, queueName) : object
+* QueueConnector::connect(queueManagerHandle, queueName [, isRemoteQueue]) : object
 * QueueConnector::getHandle() : object
 * QueueConnector::clean()
 
