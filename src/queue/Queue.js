@@ -9,7 +9,6 @@ function getReadMessageOptions() {
 
   messageOptions.Options = MQC.MQGMO_NO_SYNCPOINT |
     MQC.MQGMO_NO_WAIT |
-    MQC.MQGMO_CONVERT |
     MQC.MQGMO_FAIL_IF_QUIESCING;
 
   return {
